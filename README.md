@@ -18,12 +18,12 @@ Install the skill repository with:
 npx skills add jemanuelp/nestjs
 ```
 
-Register this repository as a skills path in your opencode configuration:
+If you install it manually, register the local `skills` directory in your opencode configuration:
 
 ```json
 {
   "skills": {
-    "paths": ["/home/jesus/projects/personales/ia/skills/nestjs/skills"]
+    "paths": ["./skills"]
   }
 }
 ```
