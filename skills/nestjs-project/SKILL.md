@@ -1,21 +1,19 @@
 ---
-name: whatsapp-bridge-project
-description: Contexto del dominio y arquitectura de WhatsApp Bridge. Usar cuando el trabajo requiera entender módulos, integraciones o topología del sistema.
+name: nestjs-project
+description: Contexto de arquitectura para arquetipos NestJS. Usar cuando el trabajo requiera entender estructura, módulos, integraciones o topología de una app NestJS.
 ---
 
-# WhatsApp Bridge Project
+# NestJS Project Archetype
 
-## Company Context
+## Project Context
 
-- This project belongs to **Anticipo**. Assume Anticipo as the default business/organizational context unless explicitly stated otherwise.
-- Main endpoint consumer is **CRM** (`https://github.com/World-Tech/crm-front`).
-- Additional consumers are **Pusher Agent** (`https://github.com/World-Tech/pushing-agent`) and **N8N agents**.
-- Upstream integration: `whatsapp-bridge` consumes the **whatsapp** service API through `@libgot/whatsapp-sdk` (`https://github.com/World-Tech/whatsapp-sdk`).
-- RabbitMQ event ownership: **whatsapp** is the producer and **whatsapp-bridge** is the consumer.
+- This repository provides reusable skills for NestJS project archetypes.
+- Treat the target application as a backend service built with NestJS + TypeScript unless the user provides a more specific context.
+- Prefer framework-native patterns before introducing custom abstractions.
 
 ## Project Overview
 
-WhatsApp Bridge is a backend service for WhatsApp integration workflows, built primarily with NestJS + TypeScript (`api/`) and backed by relational databases, Redis, RabbitMQ, and Doctrine migrations (`migrations/`).
+The archetype assumes a backend service built primarily with NestJS + TypeScript (`api/`) and commonly backed by relational databases, Redis, message queues, and migration tooling.
 
 ## Project Structure
 
@@ -47,12 +45,12 @@ WhatsApp Bridge is a backend service for WhatsApp integration workflows, built p
 
 ## Integration Patterns
 
-### WhatsApp and external services
-- WhatsApp integration behavior depends on runtime configuration (`WHATSAPP_*` env vars).
-- API calls to the upstream **whatsapp** service should be made through `@libgot/whatsapp-sdk`.
+### External services
+- External integration behavior should depend on runtime configuration and typed clients.
+- API calls to upstream services should go through dedicated client abstractions instead of ad-hoc HTTP calls scattered across modules.
 - Queue event names and routing keys should be reused from constants, not hardcoded.
 - New consumers should use `createMicroserviceConfig(...)` for consistency.
-- API contract changes should consider compatibility impact first for CRM, then for Pusher Agent and N8N consumers.
+- API contract changes should document compatibility impact for known consumers.
 
 ### Infrastructure integrations
 - RabbitMQ: primary async backbone for synced/upsert/update message flows.

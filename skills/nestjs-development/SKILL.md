@@ -1,16 +1,15 @@
 ---
-name: whatsapp-bridge-development
-description: Flujo de trabajo de desarrollo, build, tests, migraciones y criterios de PR para WhatsApp Bridge.
+name: nestjs-development
+description: Flujo de trabajo de desarrollo, build, tests, migraciones y criterios de PR para arquetipos NestJS.
 ---
 
-# WhatsApp Bridge Development Workflow
+# NestJS Development Workflow
 
-## Company Context
+## Project Context
 
-- This project belongs to **Anticipo**. Keep Anticipo as the default context for development workflow and delivery expectations.
-- Consumer priority for endpoint compatibility: **CRM** (`https://github.com/World-Tech/crm-front`) is primary; **Pusher Agent** (`https://github.com/World-Tech/pushing-agent`) and **N8N agents** are additional consumers.
-- Upstream WhatsApp integration: use `@libgot/whatsapp-sdk` (`https://github.com/World-Tech/whatsapp-sdk`) for API interaction with the **whatsapp** service.
-- RabbitMQ integration role: **whatsapp** publishes events and **whatsapp-bridge** consumes them.
+- This repository provides reusable skills for NestJS project archetypes.
+- Keep development workflow guidance generic unless the target project provides concrete scripts, services, or infrastructure.
+- Prefer validating actual project scripts before assuming command names.
 
 ## Root-level workflow
 
@@ -57,9 +56,9 @@ cd migrations
 - When adding a new NestJS entity class, include it in `api/src/database/entities.ts` (`entitiesList`) so TypeORM loads the metadata.
 
 ## Testing Guidelines
-- Antes de correr cualquier suite (`test`, `test:unit`, `test:e2e`, `test:cov`), verificar que `postgres-whatsapp-bridge` y `redis` estén `Up`:
+- Antes de correr cualquier suite (`test`, `test:unit`, `test:e2e`, `test:cov`), verificar que los servicios requeridos por el proyecto estén `Up`:
   ```bash
-  docker compose ps postgres-whatsapp-bridge redis
+  docker compose ps
   ```
 - Place new unit tests under `api/test/unit/`.
 - Place new e2e tests under `api/test/e2e/`.
@@ -75,7 +74,7 @@ cd migrations
 
 ### PR expectations
 - Clear description of intent and behavior changes.
-- If endpoint contracts change, document impact on CRM, Pusher Agent, and N8N consumers.
+- If endpoint contracts change, document impact on known consumers.
 - Migration impact explicitly documented when applicable.
 - Testing evidence included (`unit`, `e2e`, or manual validation steps).
 - Breaking changes and config changes clearly listed.
