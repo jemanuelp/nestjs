@@ -12,6 +12,12 @@ Reusable opencode skills for working with NestJS project archetypes. These skill
 
 ## Usage
 
+Install the skill repository with:
+
+```bash
+npx skills add jemanuelp/nestjs
+```
+
 Register this repository as a skills path in your opencode configuration:
 
 ```json
