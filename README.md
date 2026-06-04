@@ -1,14 +1,12 @@
-# NestJS Skills
+# NestJS Skill
 
-Reusable opencode skills for working with NestJS project archetypes. These skills give agents a shared baseline for architecture, development workflow, and coding standards when the target project follows a conventional NestJS backend structure.
+Companion root skill for NestJS project archetypes. It complements [`agent-nestjs-skills`](https://github.com/jemanuelp/agent-nestjs-skills) with local workflow, project-shape discovery, migration/tooling checks, and delivery reporting.
 
-## Skills
+## Skill
 
 | Skill | Purpose |
 | --- | --- |
-| `nestjs-project` | Explains the expected project structure, module layout, messaging topology, and integration patterns. |
-| `nestjs-development` | Defines common local workflow, API commands, migration commands, testing expectations, and PR criteria. |
-| `nestjs-standards` | Defines coding, security, communication, performance, and reliability standards for NestJS changes. |
+| `nestjs` | Complements `agent-nestjs-skills` with local archetype workflow, scripts, migrations, infrastructure checks, and reporting rules. |
 
 ## Usage
 
@@ -18,12 +16,12 @@ Install the skill repository with:
 npx skills add jemanuelp/nestjs
 ```
 
-If you install it manually, register the local `skills` directory in your opencode configuration:
+If you install it manually from a local checkout, register this repository directory in your opencode configuration:
 
 ```json
 {
   "skills": {
-    "paths": ["./skills"]
+    "paths": ["."]
   }
 }
 ```
@@ -33,15 +31,13 @@ After changing skill files or opencode configuration, restart opencode so the up
 ## Repository Structure
 
 ```text
-skills/
-  nestjs-project/SKILL.md
-  nestjs-development/SKILL.md
-  nestjs-standards/SKILL.md
+SKILL.md
+README.md
 ```
 
 ## Maintenance
 
-- Keep skill names and descriptions generic to NestJS archetypes.
+- Keep this skill complementary to `agent-nestjs-skills`; do not duplicate generic NestJS rules.
 - Avoid product-specific domains, service names, repositories, or consumers.
 - Keep commands aligned with real NestJS conventions and verify project-specific scripts before assuming them.
 - Prefer concise skill instructions that agents can apply quickly during implementation or review.
